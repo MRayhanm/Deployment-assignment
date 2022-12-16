@@ -12,16 +12,20 @@ const Photos = () => {
   
 
   const deletePhoto = (id) => {
-    fetch("https://gallery-app-server.vercel.app/photos/"+id,{
-        method : 'DELETE',
-      })
-      .then((response)=> response.json())
-      .then(json=>{
-        setPhotos(json=>{
-          return json.filter(photo=>photo.id!==id)
-        }
-        )
-      })
+    try{
+      fetch("https://gallery-app-server.vercel.app/photos/"+id,{
+          method : 'DELETE',
+        })
+        .then((response)=> response.json())
+        .then(json=>{
+          setPhotos(json=>{
+            return json.filter(photo=>photo.id!==id)
+          }
+          )
+        })
+    } catch(error){
+      setError(error)
+    }
   };
 
   useEffect(() => {
@@ -53,11 +57,6 @@ const Photos = () => {
       )
   }, [sort, submited, search]);
 
-
-  useEffect(() => {
-    setLoading(true);
-    // TODO: answer here
-  }, []);
 
   if (error) return <h1 style={{ width: "100%", textAlign: "center", marginTop: "20px" }} >Error!</h1>;
 
