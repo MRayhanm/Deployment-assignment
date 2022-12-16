@@ -51,7 +51,7 @@ const Photos = () => {
         console.log(json)
       }
       )
-  }, [sort, submited]);
+  }, [sort, submited, search]);
 
 
   useEffect(() => {
