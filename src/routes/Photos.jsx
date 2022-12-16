@@ -39,7 +39,7 @@ const Photos = () => {
       }
     }
     else{
-      var url = 'https://gallery-app-server.vercel.app/photos?q='+search
+      url = 'https://gallery-app-server.vercel.app/photos?q='+search
       if(sort==='asc'){
         url += '&_sort=id&_order=asc'
       }
